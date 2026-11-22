@@ -12,9 +12,9 @@
   --radius: 0.5rem;
   --navy: oklch(33% 0.11 255);
   --navy-deep: oklch(24% 0.08 255);
-  --brand-green: oklch(63% 0.2 142);
+  --brand-green: oklch(58% 0.17 250);
   --brand-green-foreground: oklch(100% 0 0);
-  --strip: oklch(95% 0.012 250);
+  --strip: oklch(95% 0.02 250);
   --background: oklch(100% 0 0);
   --foreground: oklch(25% 0.04 255);
   --card: oklch(100% 0 0);
@@ -23,16 +23,16 @@
   --popover-foreground: oklch(25% 0.04 255);
   --primary: oklch(33% 0.11 255);
   --primary-foreground: oklch(100% 0 0);
-  --secondary: oklch(96% 0.01 250);
+  --secondary: oklch(96% 0.02 250);
   --secondary-foreground: oklch(33% 0.11 255);
-  --muted: oklch(97% 0.006 250);
+  --muted: oklch(97% 0.012 250);
   --muted-foreground: oklch(50% 0.03 255);
-  --accent: oklch(63% 0.2 142);
+  --accent: oklch(58% 0.17 250);
   --accent-foreground: oklch(100% 0 0);
   --destructive: oklch(57.7% 0.245 27.325);
   --border: oklch(91% 0.012 250);
   --input: oklch(88% 0.015 250);
-  --ring: oklch(63% 0.2 142);
+  --ring: oklch(58% 0.17 250);
   --gradient-hero: linear-gradient(90deg, oklch(24% 0.08 255 / 0.97) 0%, oklch(28% 0.1 255 / 0.85) 38%, oklch(30% 0.1 255 / 0.2) 70%, transparent 100%);
   --gradient-card: linear-gradient(to top, oklch(22% 0.08 255 / 0.95) 0%, oklch(22% 0.08 255 / 0.4) 45%, transparent 75%);
   --shadow-card: 0 8px 24px -12px oklch(24% 0.08 255 / 0.35);
@@ -1253,7 +1253,7 @@ p {
    -------------------------------------------------------------------------- */
 #products,
 .products-section {
-  background-color: var(--muted);
+  background-color: oklch(97% 0.018 250);
   padding: 36px 0;
 }
 
@@ -1838,7 +1838,7 @@ p {
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--brand-green);
-  box-shadow: 0 0 0 2px oklch(63% 0.2 142 / 0.25);
+  box-shadow: 0 0 0 2px oklch(58% 0.17 250 / 0.25);
 }
 
 .form-input.error,
@@ -2254,7 +2254,7 @@ p {
 
 /* Individual card */
 .cat-card {
-  background: #ffffff;
+  background: #f7faff;
   border: 1.5px solid #e2e8f0;
   border-radius: 12px;
   padding: 24px 22px 20px;
@@ -2278,16 +2278,16 @@ p {
 }
 .cat-card:hover,
 .cat-card.cat-active {
-  border-color: var(--brand-green, #38a169);
+  border-color: var(--brand-green, #2563eb);
   box-shadow: 0 8px 28px -6px rgba(0,80,40,0.14);
   transform: translateY(-3px);
 }
 .cat-card:hover::before,
 .cat-card.cat-active::before {
-  background: var(--brand-green, #38a169);
+  background: var(--brand-green, #2563eb);
 }
 .cat-card.cat-active {
-  background: #f0fdf4;
+  background: #eff6ff;
 }
 
 /* Card header */
@@ -2310,8 +2310,8 @@ p {
 }
 .cat-card:hover .cat-card-icon,
 .cat-card.cat-active .cat-card-icon {
-  background: #c6f6d5;
-  color: #276749;
+  background: #dbeafe;
+  color: #1d4ed8;
 }
 .cat-card-title {
   font-size: 1.05rem;
@@ -2348,7 +2348,7 @@ p {
   content: '•';
   position: absolute;
   left: 4px;
-  color: var(--brand-green, #38a169);
+  color: var(--brand-green, #2563eb);
   font-size: 1rem;
   line-height: 1.4;
 }
@@ -2371,11 +2371,11 @@ p {
   letter-spacing: 0.01em;
 }
 .cat-view-btn:hover {
-  background: var(--brand-green, #38a169);
+  background: var(--brand-green, #2563eb);
   gap: 10px;
 }
 .cat-card.cat-active .cat-view-btn {
-  background: var(--brand-green, #38a169);
+  background: var(--brand-green, #2563eb);
 }
 
 /* ==========================================================================
@@ -2415,8 +2415,8 @@ p {
 .prod-tab svg { flex-shrink: 0; opacity: 0.65; transition: opacity 0.2s; }
 .prod-tab:hover {
   background: #e2f4eb;
-  color: #276749;
-  border-color: #c6f6d5;
+  color: #1d4ed8;
+  border-color: #dbeafe;
 }
 .prod-tab:hover svg { opacity: 1; }
 .prod-tab[aria-selected="true"] {
@@ -2491,9 +2491,9 @@ p {
 .prod-panel-badge {
   display: inline-flex;
   align-items: center;
-  background: rgba(56,161,105,0.2);
-  color: #9ae6b4;
-  border: 1px solid rgba(56,161,105,0.35);
+  background: rgba(59,130,246,0.18);
+  color: #bfdbfe;
+  border: 1px solid rgba(59,130,246,0.35);
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 700;
@@ -2505,7 +2505,7 @@ p {
   align-items: center;
   gap: 7px;
   padding: 8px 18px;
-  background: var(--brand-green, #38a169);
+  background: var(--brand-green, #2563eb);
   color: #fff;
   border: none;
   border-radius: 7px;
@@ -2516,7 +2516,7 @@ p {
   font-family: inherit;
   white-space: nowrap;
 }
-.prod-btn-pdf:hover { background: #2f8f5a; transform: translateY(-1px); }
+.prod-btn-pdf:hover { background: #1d4ed8; transform: translateY(-1px); }
 .prod-btn-enquire {
   display: inline-flex;
   align-items: center;
@@ -2560,7 +2560,7 @@ p {
   transition: background 0.18s ease;
   position: relative;
 }
-.prod-item-card:hover { background: #f0fdf4; }
+.prod-item-card:hover { background: #eff6ff; }
 
 .prod-item-num {
   position: absolute;
@@ -2581,7 +2581,7 @@ p {
 .prod-item-cas {
   font-size: 0.75rem;
   font-family: 'Courier New', monospace;
-  color: #6b46c1;
+  color: #1d4ed8;
   font-weight: 500;
 }
 .prod-item-tags {
@@ -2599,9 +2599,9 @@ p {
   line-height: 1.5;
 }
 .prod-tag-purity {
-  background: #ebf8f1;
-  color: #276749;
-  border: 1px solid #c6f6d5;
+  background: #e8f1ff;
+  color: #1d4ed8;
+  border: 1px solid #cfe0ff;
 }
 .prod-tag-pack {
   background: #ebf4ff;
@@ -2626,7 +2626,7 @@ p {
   body > *:not(#vhl-print-area) { display: none !important; }
   #vhl-print-area { display: block !important; font-family: Arial, sans-serif; font-size: 10pt; }
   .vhl-print-header { background: #1a2f4a !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 16pt 20pt; display: flex; align-items: center; gap: 14pt; }
-  .vhl-print-company { font-size: 7pt; letter-spacing: .1em; color: #38a169 !important; text-transform: uppercase; }
+  .vhl-print-company { font-size: 7pt; letter-spacing: .1em; color: #60a5fa !important; text-transform: uppercase; }
   .vhl-print-cat { font-size: 15pt; font-weight: 800; color: #fff !important; margin: 4pt 0 0; }
   .vhl-print-desc { font-size: 8.5pt; color: #555; padding: 8pt 20pt 6pt; border-bottom: .5pt solid #ccc; }
   .vhl-print-table { width: 100%; border-collapse: collapse; font-size: 8pt; }
@@ -2662,7 +2662,7 @@ p {
     margin-bottom: 12px;
     background: none;
     border: none;
-    color: #9ae6b4;
+    color: #bfdbfe;
     font-family: inherit;
     font-size: 0.82rem;
     font-weight: 700;

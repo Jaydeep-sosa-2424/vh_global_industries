@@ -188,7 +188,7 @@
         <td>${i + 1}</td>
         <td><strong>${esc(p.name)}</strong></td>
         <td style="font-family:monospace;color:#553c9a;font-size:7.5pt">${esc(p.cas)}</td>
-        <td style="color:#276749;font-weight:600">${esc(p.purity)}</td>
+        <td style="color:#1d4ed8;font-weight:600">${esc(p.purity)}</td>
         <td>${esc(p.packaging)}</td>
         <td style="color:#555">${esc(p.uses)}</td>
       </tr>`).join('');
@@ -200,7 +200,7 @@
       <div class="vhl-print-header">
         <svg viewBox="0 0 40 40" width="52" height="52" style="flex-shrink:0">
           <circle cx="20" cy="20" r="18" fill="#203a5c"/>
-          <path d="M4 20a16 16 0 0 0 32 0c-6 4-14 5-22 1-4-2-7-2-10-1Z" fill="#38a169"/>
+          <path d="M4 20a16 16 0 0 0 32 0c-6 4-14 5-22 1-4-2-7-2-10-1Z" fill="#3b82f6"/>
           <ellipse cx="20" cy="20" rx="7" ry="18" fill="none" stroke-width="1.5" stroke="rgba(255,255,255,0.7)"/>
           <path d="M2 20h36M6 11h28" stroke-width="1.5" stroke="rgba(255,255,255,0.7)" fill="none"/>
         </svg>
