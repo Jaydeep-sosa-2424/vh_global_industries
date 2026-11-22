@@ -2167,8 +2167,15 @@ p {
    15. ACCESSIBILITY & FOCUS STYLES
    -------------------------------------------------------------------------- */
 :focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+}
+
+.cat-card:focus-visible,
+.prod-tab:focus-visible,
+.mobile-enquire-btn:focus-visible {
+  outline-width: 3px;
+  outline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2239,11 +2246,14 @@ p {
    ========================================================================== */
 
 .cat-cards-grid {
-  display: none;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-top: 32px;
 }
+
+/* When a category is open, the cards give way to the product details */
+.products-section.panel-open .cat-cards-grid { display: none; }
 
 @media (max-width: 1024px) {
   .cat-cards-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2388,9 +2398,9 @@ p {
   margin-top: 4px;
 }
 
-/* ── Tab Bar ── */
+/* ── Tab Bar (kept in the markup for data/icons, hidden from the UI) ── */
 .prod-tabs {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 32px;
@@ -2478,6 +2488,22 @@ p {
   line-height: 1.5;
 }
 .prod-back-btn {
+  display: inline-flex;
+  flex-basis: 100%;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  margin-bottom: 12px;
+  background: none;
+  border: none;
+  color: #bfdbfe;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mobile-enquire-bar {
   display: none;
 }
 
@@ -2638,14 +2664,10 @@ p {
 }
 
 /* --------------------------------------------------------------------------
-   MOBILE PRODUCTS — Category cards with "View Products" buttons
+   MOBILE PRODUCTS — compact cards and toolbar tweaks
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  /* Cards replace the desktop tab bar on small screens */
-  .prod-tabs { display: none; }
-  .cat-cards-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 24px; }
-  .products-section.panel-open .cat-cards-grid { display: none; }
-
+  .cat-cards-grid { gap: 14px; margin-top: 24px; }
   .cat-card { padding: 18px 18px 16px; gap: 12px; }
   .cat-card-icon { width: 44px; height: 44px; }
   .cat-card-title { font-size: 1rem; }
@@ -2653,21 +2675,7 @@ p {
   .cat-preview-list li { font-size: 0.8rem; }
   .cat-view-btn { width: 100%; justify-content: center; padding: 11px 16px; font-size: 0.85rem; }
 
-  /* Back link + toolbar layout once a category is open */
-  .prod-back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 0;
-    margin-bottom: 12px;
-    background: none;
-    border: none;
-    color: #bfdbfe;
-    font-family: inherit;
-    font-size: 0.82rem;
-    font-weight: 700;
-    cursor: pointer;
-  }
+  /* Toolbar layout once a category is open */
   .prod-panel-toolbar {
     flex-direction: column;
     align-items: stretch;
@@ -2682,4 +2690,35 @@ p {
   .prod-btn-enquire { flex: 1; justify-content: center; }
   .prod-cards-grid { grid-template-columns: 1fr; }
   .prod-item-card { padding: 16px; }
+
+  /* Sticky enquiry bar while browsing a category on mobile */
+  body.products-open { padding-bottom: 72px; }
+  body.products-open .mobile-enquire-bar {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 80;
+    background: #ffffff;
+    border-top: 1px solid #dbe3ee;
+    box-shadow: 0 -4px 18px rgba(15, 40, 70, 0.08);
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-enquire-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    background: var(--brand-green);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
 }

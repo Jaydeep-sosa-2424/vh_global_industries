@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const HEADER_OFFSET = 80; // 64px header + 16px buffer
   const WHATSAPP_PHONE = '918758599805';
-  const CONTACT_EMAIL = 'info@vhlglobal.in';
+  const CONTACT_EMAIL = 'labanaharshad@gmail.com';
 
   // DOM Elements
   const siteHeader = document.querySelector('.site-header');
@@ -106,8 +106,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Handle direct navigation with hash on page load
-  if (window.location.hash) {
+  // Refresh should start at the top, not jump back to a section hash.
+  // Direct links that open the page fresh still honour their hash.
+  const navType = performance.getEntriesByType?.('navigation')[0]?.type;
+  if (navType === 'reload') {
+    if (history.replaceState) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+    const goToTop = () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+      window.scrollTo(0, 0);
+      document.documentElement.style.scrollBehavior = '';
+    };
+    goToTop();
+    // Re-assert after the browser finishes its own hash/scroll restoration
+    window.addEventListener('load', () => setTimeout(goToTop, 120), { once: true });
+    setTimeout(goToTop, 300);
+  } else if (window.location.hash) {
+    // Handle direct navigation with hash on page load
     const initialTarget = document.querySelector(window.location.hash);
     if (initialTarget) {
       setTimeout(() => {
@@ -766,13 +782,12 @@ document.addEventListener('DOMContentLoaded', () => {
       duration: '0.6s',
       stagger: false
     },
-    // Strip bar items
+    // Section immediately after the hero — simple fade-in as it scrolls into view
     {
-      selector: '.strip-item',
-      animation: 'fade-up',
-      duration: '0.5s',
-      stagger: true,
-      staggerDelay: 100
+      selector: '.strip-bar',
+      animation: 'fade-in',
+      duration: '0.8s',
+      stagger: false
     },
     // Product cards
     {

@@ -19,6 +19,7 @@
   const catCardsGrid = document.getElementById('cat-cards-grid');
   const productsSec = document.getElementById('products');
   const backBtn     = document.getElementById('prod-back-btn');
+  const mobileEnquireBtn = document.getElementById('mobile-enquire-btn');
   const pdfBtn      = document.getElementById('prod-pdf-btn');
   const enquireBtn  = document.getElementById('prod-enquire-btn');
 
@@ -27,10 +28,19 @@
 
   if (!panel || !tabs.length) return;
 
+  // Keep the card/panel state in sync with the viewport
+  function syncPanelState() {
+    const panelShown = panel.style.display === 'block';
+    if (productsSec) productsSec.classList.toggle('panel-open', panelShown);
+    // The sticky enquire bar is a mobile-only affordance
+    document.body.classList.toggle('products-open', panelShown && isMobile());
+  }
+  window.addEventListener('resize', syncPanelState);
+
   // ══════════════════════════════════════════
   // 1. OPEN CATEGORY (show cards)
   // ══════════════════════════════════════════
-  function openCategory(category) {
+  function openCategory(category, options = {}) {
     const data = VHL_PRODUCTS[category];
     if (!data) return;
 
@@ -57,7 +67,7 @@
 
     // Show panel (on mobile the cards give way to the opened category)
     panel.style.display = 'block';
-    if (isMobile() && productsSec) productsSec.classList.add('panel-open');
+    syncPanelState();
 
     // Update tab / card selected states
     tabs.forEach(t => {
@@ -70,12 +80,14 @@
       });
     }
 
-    // Scroll panel into view
-    setTimeout(() => {
-      const rect = panel.getBoundingClientRect();
-      const top  = window.pageYOffset + rect.top - 90;
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-    }, 60);
+    // Scroll panel into view (skipped on initial load so refresh keeps the user's position)
+    if (options.scroll !== false) {
+      setTimeout(() => {
+        const rect = panel.getBoundingClientRect();
+        const top  = window.pageYOffset + rect.top - 90;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      }, 60);
+    }
   }
 
   // ══════════════════════════════════════════
@@ -101,7 +113,7 @@
   function showAllCategories() {
     panel.style.display = 'none';
     currentCategory = '';
-    if (productsSec) productsSec.classList.remove('panel-open');
+    syncPanelState();
     tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
     if (catCardsGrid) {
       catCardsGrid.querySelectorAll('.cat-card').forEach(c => c.classList.remove('cat-active'));
@@ -171,6 +183,11 @@
     }
   });
 
+  // Sticky mobile bar uses the same enquiry action
+  if (mobileEnquireBtn && enquireBtn) {
+    mobileEnquireBtn.addEventListener('click', () => enquireBtn.click());
+  }
+
   // ══════════════════════════════════════════
   // 4. DOWNLOAD PDF
   // ══════════════════════════════════════════
@@ -217,7 +234,7 @@
         <tbody>${rows}</tbody>
       </table>
       <div class="vhl-print-footer">
-        <span><strong>VHL Global Industries</strong> · info@vhlglobal.in · +91 87585 99805</span>
+        <span><strong>VHL Global Industries</strong> · labanaharshad@gmail.com · +91 87585 99805</span>
         <span>Specifications subject to change. Contact us for pricing &amp; availability.</span>
       </div>`;
     document.body.appendChild(el);
@@ -271,11 +288,6 @@
   }
 
   buildCategoryCards();
-
-  // On desktop keep the first category open; on mobile show the category cards first
-  if (!isMobile()) {
-    const firstCat = tabs[0]?.getAttribute('data-category');
-    if (firstCat && VHL_PRODUCTS[firstCat]) openCategory(firstCat);
-  }
+  // Products page opens on the category cards; a click opens the full chemical list.
 
 })();
