@@ -2059,6 +2059,20 @@ p {
   align-items: center;
 }
 
+.email-open-status {
+  margin: 12px 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.email-open-status a {
+  color: var(--brand-blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 @media (min-width: 480px) {
   .form-actions {
     gap: 12px;

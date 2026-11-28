@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const productCards = document.querySelectorAll('.product-card');
   const scrollTopBtn = document.querySelector('.scroll-top');
   const inquiryForm = document.getElementById('inquiry-form');
+  const emailOpenStatus = document.getElementById('email-open-status');
   const whatsappBtn = document.getElementById('whatsapp-btn');
   const footerYear = document.getElementById('footer-year');
 
@@ -672,14 +673,10 @@ document.addEventListener('DOMContentLoaded', () => {
         emailSubject
       )}&body=${encodeURIComponent(emailBody)}`;
 
-      // Open mailto link
+      // Hand off directly to the visitor's configured mail app. Avoid a
+      // blocking alert here: on mobile it can interrupt the mail-app handoff.
+      if (emailOpenStatus) emailOpenStatus.hidden = false;
       window.location.href = mailtoUrl;
-
-      // Inform user via alert as specified
-      alert(
-        'Your email client will open with the inquiry details. If it does not open, please email us directly at ' +
-          CONTACT_EMAIL
-      );
     });
   }
 
