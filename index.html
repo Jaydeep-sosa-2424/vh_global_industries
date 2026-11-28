@@ -48,12 +48,22 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
           </a>
           <div class="dropdown-menu">
-            <button class="dropdown-item" data-category="Solvents &amp; Intermediates">Solvents &amp; Intermediates</button>
-            <button class="dropdown-item" data-category="Inorganic Chemicals">Inorganic Chemicals</button>
-            <button class="dropdown-item" data-category="Specialty Chemicals">Specialty Chemicals</button>
-            <button class="dropdown-item" data-category="Industrial Chemicals">Industrial Chemicals</button>
-            <button class="dropdown-item" data-category="Acids &amp; Alkalis">Acids &amp; Alkalis</button>
-            <button class="dropdown-item" data-category="Other Chemicals">Other Chemicals</button>
+            <button class="dropdown-item" data-category="Textile Printing Chemicals &amp; Auxiliaries">Textile Printing Chemicals &amp; Auxiliaries</button>
+            <button class="dropdown-item" data-category="Textile Auxiliaries">Textile Auxiliaries</button>
+            <button class="dropdown-item" data-category="Textile Chemicals">Textile Chemicals</button>
+            <button class="dropdown-item" data-category="Textile Softeners">Textile Softeners</button>
+            <button class="dropdown-item" data-category="Dyeing Auxiliaries">Dyeing Auxiliaries</button>
+            <button class="dropdown-item" data-category="Finishing Chemicals">Finishing Chemicals</button>
+            <button class="dropdown-item" data-category="Chemical Binders">Chemical Binders</button>
+            <button class="dropdown-item" data-category="Pretreatment Auxiliaries">Pretreatment Auxiliaries</button>
+            <button class="dropdown-item" data-category="Printing Thickeners">Printing Thickeners</button>
+            <button class="dropdown-item" data-category="Textile Finishing Chemicals">Textile Finishing Chemicals</button>
+            <button class="dropdown-item" data-category="Sizing Chemicals">Sizing Chemicals</button>
+            <button class="dropdown-item" data-category="Screen Printing Inks">Screen Printing Inks</button>
+            <button class="dropdown-item" data-category="Guar Gum Derivatives">Guar Gum Derivatives</button>
+            <button class="dropdown-item" data-category="Textile Enzymes">Textile Enzymes</button>
+            <button class="dropdown-item" data-category="Discharge Chemicals">Discharge Chemicals</button>
+            <button class="dropdown-item" data-category="Reactive Dyes">Reactive Dyes</button>
           </div>
         </div>
         <a href="#industries" class="nav-link">Industries</a>
@@ -79,7 +89,7 @@
         </a>
       </div>
 
-      <!-- Get a Quote (lg-xl) -->
+      <!-- Get a Quote (phone and tablet) -->
       <a href="#contact" class="header-cta-mobile">Get a Quote</a>
 
       <!-- Mobile Menu Button -->
@@ -202,45 +212,24 @@
             <span class="accent-bar" aria-hidden="true"></span>
             OUR PRODUCTS
           </h2>
-          <p class="prod-section-sub">Click any category to explore our full product range</p>
+          <p class="prod-section-sub">Explore our extensive range of 105+ high-performance textile chemicals, auxiliaries, binders &amp; specialty dyes</p>
         </div>
 
-        <!-- ── Category Cards (mobile) ── -->
+        <!-- ── Live Product Search Bar ── -->
+        <div class="prod-search-wrapper">
+          <div class="prod-search-box">
+            <svg class="prod-search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="prod-search-input" class="prod-search-input" placeholder="Search 105+ products by name, category, or price (e.g. Khadi, Binder, Silicone, Enzyme)..." autocomplete="off" aria-label="Search products" />
+            <button type="button" id="prod-search-clear" class="prod-search-clear" aria-label="Clear search" style="display:none;">&times;</button>
+          </div>
+          <div id="prod-search-stats" class="prod-search-stats" style="display:none;"></div>
+        </div>
+
+        <!-- ── Category Cards Grid ── -->
         <div id="cat-cards-grid" class="cat-cards-grid"></div>
 
         <!-- ── Category Tab Bar (desktop) ── -->
-        <div class="prod-tabs" id="prod-tabs" role="tablist">
-          <button class="prod-tab" role="tab" data-category="Solvents &amp; Intermediates" aria-selected="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 7H8L9 3z"/><path d="M8 10c0 6 8 6 8 0"/><path d="M6 21h12"/><path d="M12 10v11"/></svg>
-            Solvents &amp; Intermediates
-            <span class="prod-tab-count">15</span>
-          </button>
-          <button class="prod-tab" role="tab" data-category="Inorganic Chemicals" aria-selected="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-            Inorganic Chemicals
-            <span class="prod-tab-count">15</span>
-          </button>
-          <button class="prod-tab" role="tab" data-category="Specialty Chemicals" aria-selected="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14,2 14,8 20,8"/><path d="M9 15l2 2 4-4"/></svg>
-            Specialty Chemicals
-            <span class="prod-tab-count">14</span>
-          </button>
-          <button class="prod-tab" role="tab" data-category="Industrial Chemicals" aria-selected="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="12" y2="12"/><line x1="14.5" y1="14.5" x2="12" y2="12"/></svg>
-            Industrial Chemicals
-            <span class="prod-tab-count">15</span>
-          </button>
-          <button class="prod-tab" role="tab" data-category="Acids &amp; Alkalis" aria-selected="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/></svg>
-            Acids &amp; Alkalis
-            <span class="prod-tab-count">15</span>
-          </button>
-          <button class="prod-tab" role="tab" data-category="Other Chemicals" aria-selected="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
-            Other Chemicals
-            <span class="prod-tab-count">15</span>
-          </button>
-        </div>
+        <div class="prod-tabs" id="prod-tabs" role="tablist"></div>
 
         <!-- ── Product Cards Panel ── -->
         <div id="prod-panel" class="prod-panel" style="display:none;" aria-live="polite">
@@ -277,6 +266,20 @@
       </div>
     </section>
 
+    <!-- ===== TRENDING PRODUCTS ===== -->
+    <section class="trending-section" aria-labelledby="trending-products-title">
+      <div class="container">
+        <div class="trending-products">
+          <div class="trending-products-heading">
+            <div>
+              <p class="trending-eyebrow">POPULAR PICKS</p>
+              <h2 id="trending-products-title">Trending Products</h2>
+            </div>
+          </div>
+          <div id="trending-products-track" class="trending-products-track" role="region" aria-roledescription="carousel" aria-label="Trending products automatically scrolling"></div>
+        </div>
+      </div>
+    </section>
 
     <!-- ===== ABOUT SECTION ===== -->
     <section id="about" class="about-section">
@@ -460,12 +463,22 @@
             <label class="form-label" for="product">Product Interested In *</label>
             <select id="product" name="product" class="form-select" required>
               <option value="">Select a category</option>
-              <option value="Solvents &amp; Intermediates">Solvents &amp; Intermediates</option>
-              <option value="Inorganic Chemicals">Inorganic Chemicals</option>
-              <option value="Specialty Chemicals">Specialty Chemicals</option>
-              <option value="Industrial Chemicals">Industrial Chemicals</option>
-              <option value="Acids &amp; Alkalis">Acids &amp; Alkalis</option>
-              <option value="Other Chemicals">Other Chemicals</option>
+              <option value="Textile Printing Chemicals &amp; Auxiliaries">Textile Printing Chemicals &amp; Auxiliaries</option>
+              <option value="Textile Auxiliaries">Textile Auxiliaries</option>
+              <option value="Textile Chemicals">Textile Chemicals</option>
+              <option value="Textile Softeners">Textile Softeners</option>
+              <option value="Dyeing Auxiliaries">Dyeing Auxiliaries</option>
+              <option value="Finishing Chemicals">Finishing Chemicals</option>
+              <option value="Chemical Binders">Chemical Binders</option>
+              <option value="Pretreatment Auxiliaries">Pretreatment Auxiliaries</option>
+              <option value="Printing Thickeners">Printing Thickeners</option>
+              <option value="Textile Finishing Chemicals">Textile Finishing Chemicals</option>
+              <option value="Sizing Chemicals">Sizing Chemicals</option>
+              <option value="Screen Printing Inks">Screen Printing Inks</option>
+              <option value="Guar Gum Derivatives">Guar Gum Derivatives</option>
+              <option value="Textile Enzymes">Textile Enzymes</option>
+              <option value="Discharge Chemicals">Discharge Chemicals</option>
+              <option value="Reactive Dyes">Reactive Dyes</option>
             </select>
             <span class="error-message">Please select a product category</span>
           </div>
@@ -539,12 +552,14 @@
       <div>
         <h3 class="footer-heading">PRODUCT CATEGORIES</h3>
         <ul class="footer-links">
-          <li><button class="footer-product-link" data-category="Solvents &amp; Intermediates">Solvents &amp; Intermediates</button></li>
-          <li><button class="footer-product-link" data-category="Inorganic Chemicals">Inorganic Chemicals</button></li>
-          <li><button class="footer-product-link" data-category="Specialty Chemicals">Specialty Chemicals</button></li>
-          <li><button class="footer-product-link" data-category="Industrial Chemicals">Industrial Chemicals</button></li>
-          <li><button class="footer-product-link" data-category="Acids &amp; Alkalis">Acids &amp; Alkalis</button></li>
-          <li><button class="footer-product-link" data-category="Other Chemicals">Other Chemicals</button></li>
+          <li><button class="footer-product-link" data-category="Textile Printing Chemicals &amp; Auxiliaries">Textile Printing Chemicals</button></li>
+          <li><button class="footer-product-link" data-category="Textile Auxiliaries">Textile Auxiliaries</button></li>
+          <li><button class="footer-product-link" data-category="Textile Chemicals">Textile Chemicals</button></li>
+          <li><button class="footer-product-link" data-category="Textile Softeners">Textile Softeners</button></li>
+          <li><button class="footer-product-link" data-category="Dyeing Auxiliaries">Dyeing Auxiliaries</button></li>
+          <li><button class="footer-product-link" data-category="Chemical Binders">Chemical Binders</button></li>
+          <li><button class="footer-product-link" data-category="Screen Printing Inks">Screen Printing Inks</button></li>
+          <li><button class="footer-product-link" data-category="Textile Enzymes">Textile Enzymes</button></li>
         </ul>
       </div>
 
