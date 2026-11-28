@@ -243,6 +243,55 @@
   // ══════════════════════════════════════════
   // 4. CARD HTML BUILDER
   // ══════════════════════════════════════════
+  function renderProductVisual(p, index, catName) {
+    const productToken = `${catName}-${p.name}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48);
+    const gradientId = `product-pack-${index}-${productToken}`;
+    const palette = [
+      ['#1d4ed8', '#60a5fa', '#dbeafe'],
+      ['#0f766e', '#34d399', '#d1fae5'],
+      ['#b45309', '#fbbf24', '#fef3c7'],
+      ['#6d28d9', '#a78bfa', '#ede9fe']
+    ][Array.from(productToken).reduce((sum, char) => sum + char.charCodeAt(0), 0) % 4];
+    const packageText = (p.packaging || 'Product pack').toLowerCase();
+    let packageShape;
+
+    if (packageText.includes('bag')) {
+      packageShape = `
+        <path d="M49 35h42l10 91H39l10-91Z" fill="url(#${gradientId})" stroke="${palette[0]}" stroke-width="2"/>
+        <path d="M49 35l6-11h30l6 11M43 113h54" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="3" stroke-linecap="round"/>
+        <rect x="48" y="62" width="44" height="31" rx="4" fill="#fff" opacity=".94"/>
+        <text x="70" y="76" text-anchor="middle" fill="${palette[0]}" font-size="8" font-weight="800">VHL</text>
+        <path d="M56 82h28" stroke="${palette[1]}" stroke-width="2" stroke-linecap="round"/>`;
+    } else if (/bottle|carboy|can|pail|container/.test(packageText)) {
+      packageShape = `
+        <path d="M58 25h24v14l11 9v68a10 10 0 0 1-10 10H55a10 10 0 0 1-10-10V48l13-9V25Z" fill="url(#${gradientId})" stroke="${palette[0]}" stroke-width="2"/>
+        <path d="M61 25v-8h18v8M49 53h42" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="3" stroke-linecap="round"/>
+        <rect x="51" y="65" width="38" height="31" rx="4" fill="#fff" opacity=".95"/>
+        <text x="70" y="79" text-anchor="middle" fill="${palette[0]}" font-size="8" font-weight="800">VHL</text>
+        <path d="M58 85h24" stroke="${palette[1]}" stroke-width="2" stroke-linecap="round"/>`;
+    } else {
+      packageShape = `
+        <rect x="37" y="33" width="66" height="88" rx="13" fill="url(#${gradientId})" stroke="${palette[0]}" stroke-width="2"/>
+        <path d="M40 48h60M40 104h60M51 32v90M89 32v90" fill="none" stroke="rgba(255,255,255,.36)" stroke-width="3"/>
+        <path d="M48 28h44v9H48z" rx="4" fill="${palette[0]}"/>
+        <rect x="48" y="62" width="44" height="29" rx="4" fill="#fff" opacity=".95"/>
+        <text x="70" y="75" text-anchor="middle" fill="${palette[0]}" font-size="8" font-weight="800">VHL</text>
+        <path d="M56 82h28" stroke="${palette[1]}" stroke-width="2" stroke-linecap="round"/>`;
+    }
+
+    return `
+      <div class="prod-item-visual" role="img" aria-label="Packaging illustration for ${esc(p.name)}" style="--product-accent:${palette[2]}">
+        <span class="prod-visual-kicker">VHL TEXTILE CHEMICALS</span>
+        <span class="prod-visual-pack">${esc(p.packaging || 'Product pack')}</span>
+        <svg viewBox="0 0 140 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="${gradientId}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${palette[1]}"/><stop offset="1" stop-color="${palette[0]}"/></linearGradient></defs>
+          <ellipse cx="70" cy="130" rx="42" ry="7" fill="${palette[0]}" opacity=".12"/>
+          ${packageShape}
+        </svg>
+      </div>
+    `;
+  }
+
   function renderProductCard(p, index, catName, showCategoryBadge = false) {
     const catBadge = showCategoryBadge
       ? `<span class="prod-tag prod-tag-category">${esc(catName)}</span>`
@@ -251,6 +300,7 @@
     return `
       <div class="prod-item-card" data-product-name="${esc(p.name)}">
         <span class="prod-item-num">#${index + 1}</span>
+        ${renderProductVisual(p, index, catName)}
         <div class="prod-item-name">${esc(p.name)}</div>
         <div class="prod-item-tags">
           <span class="prod-tag prod-tag-price">${esc(p.price)}</span>
